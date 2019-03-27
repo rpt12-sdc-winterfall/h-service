@@ -7,17 +7,25 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "webpack -d --watch",
+    "seed": "node db/fakeData.js",
+    "test": "mocha spec/serverSpec.js",
+    "start": "nodemon server/index.js"
+  },
   "dependencies": {
     "express": "^4.16.4",
+    "faker": "^4.1.0",
     "mongoose": "^5.4.19",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "eslint": "^5.3.0",
