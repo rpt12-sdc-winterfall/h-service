@@ -9,8 +9,8 @@ app.listen(port, () => console.log(`listening on port ${port}`));
 app.use(express.static(`${__dirname}/../public`));
 app.use(morgan('dev'));
 
-app.get('/reviews', (req, res) => {
-  review.find({}).exec()
+app.get('/reviews/:id', (req, res) => {
+  review.find({ id: req.params.id }).exec()
     .then((results) => {
       res.send(results);
     })

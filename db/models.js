@@ -11,6 +11,7 @@ db.once('open', () => {
 });
 
 const reviewSchema = new mongoose.Schema({
+  id: Number,
   image_url: String,
   reviewer_name: String,
   star_rate: Number,

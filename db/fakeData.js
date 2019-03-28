@@ -5,6 +5,7 @@ const fakeData = [];
 
 for (let i = 0; i < 10000; i += 1) {
   const document = {
+    id: Math.floor(Math.random() * 100),
     image_url: faker.image.people(),
     reviewer_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
     star_rate: Math.floor(Math.random() * 6),
