@@ -23,7 +23,7 @@ npm run seed
 ```sh
 npm start
 ```
-3- use `Postman` to send a `\reviews` GET request to fetch the 10000 reviews.
+3- use `Postman` to send a `/reviews/:id` GET request to fetch the reviews associated to the book with the specified `id`.
 
 ## Requirements
 
@@ -45,13 +45,14 @@ npm install
 
 ## API Endpoints
 
-#### `/reviews`
-* description: retrieve all the reviews from the database.
+#### `/reviews/:id`
+* description: retrieve the reviews associated to the book with the specified `id`.
 * API response:
 A JSON-encoded array of objects where each object represent a review. A review object example looks like this:
 ```js
 {
   "_id": "5c99be23d83f3c5994dd1e38",
+  "id": 20,
   "image_url": "http://lorempixel.com/640/480/people",
   "reviewer_name": "Rey Cummerata",
   "star_rate": 5,
