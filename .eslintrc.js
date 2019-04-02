@@ -3,6 +3,7 @@ module.exports = {
   rules: {
     "linebreak-style": ["error", "windows"],
     "no-console": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
   },
   "env": {
     "browser": true,
