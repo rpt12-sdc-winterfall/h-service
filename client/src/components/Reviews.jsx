@@ -29,9 +29,7 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     fetch('http://localhost:3003/reviews/20')
-      .then((result) => {
-        return result.json();
-      })
+      .then(result => result.json())
       .then((result) => {
         this.setState(() => (
           {
