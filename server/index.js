@@ -35,5 +35,6 @@ app.patch('/review', jsonParser, (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.send('Something went wrong!...');
     });
 });
