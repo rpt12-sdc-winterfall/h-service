@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Reviews from './components/Reviews';
+
+const App = () => (
+  <Reviews />
+);
 
 ReactDOM.render(
-  <h1>Reviews</h1>,
-  document.getElementById('reviews'),
+  <App />,
+  document.getElementById('app'),
 );
