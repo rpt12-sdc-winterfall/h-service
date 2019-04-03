@@ -1,9 +1,10 @@
 import React from 'react';
+import StarRatingComponent from 'react-star-rating-component';
 
 class Reviews extends React.Component {
   static like(event) {
     const reviewId = {
-      reviewId: event.target.parentNode.parentNode.getAttribute('reviewid'),
+      reviewId: event.target.parentNode.parentNode.getAttribute('review_id'),
       likes_count: event.target.previousSibling.textContent,
     };
 
@@ -24,7 +25,6 @@ class Reviews extends React.Component {
     this.state = {
       reviews: [],
     };
-    this.reviewRef = React.createRef();
   }
 
   componentDidMount() {
@@ -46,10 +46,11 @@ class Reviews extends React.Component {
     const { reviews } = this.state;
 
     const renderedReviews = reviews.map(review => (
-      <div key={review._id} reviewid={review._id} ref={this.reviewRef} className="review">
+      <div key={review._id} review_id={review._id} className="review">
         <div className="review-header">
           <img alt="" src={review.image_url} />
           <p>{review.reviewer_name}</p>
+          <StarRatingComponent name="review_rate" value={review.star_rate} starColor="#f65" emptyStarColor="#ddd" editing={false} />
           <p>{review.review_date}</p>
         </div>
         <div className="review-description">

@@ -6,7 +6,7 @@ const fakeData = [];
 for (let i = 0; i < 10000; i += 1) {
   const document = {
     id: Math.floor(Math.random() * 100),
-    image_url: faker.image.people(),
+    image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/03/30/30-chandler-bing.w330.h330.jpg',
     reviewer_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
     star_rate: Math.floor(Math.random() * 6),
     review_date: faker.date.past(),
