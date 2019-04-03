@@ -56,7 +56,10 @@ class Reviews extends React.Component {
           {review.review_description}
         </div>
         <div className="review-footer">
-          <p className="likes_count">{review.likes_count}</p>
+          <p className="likes_count">
+            {review.likes_count}
+            { ' likes' }
+          </p>
           <button type="submit" onClick={(event) => { Reviews.like(event); }}>Like</button>
         </div>
       </div>
