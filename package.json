@@ -22,7 +22,8 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-star-rating-component": "^1.4.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
