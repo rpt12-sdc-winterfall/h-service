@@ -2,24 +2,6 @@ import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 
 class Reviews extends React.Component {
-  static like(event) {
-    const reviewId = {
-      reviewId: event.target.parentNode.parentNode.getAttribute('review_id'),
-      likes_count: event.target.previousSibling.textContent,
-    };
-
-    fetch('http://localhost:3003/review', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(reviewId),
-    })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -42,6 +24,27 @@ class Reviews extends React.Component {
       });
   }
 
+  like(event) {
+    const reviewId = {
+      reviewId: event.target.parentNode.parentNode.getAttribute('review_id'),
+      likes_count: event.target.previousSibling.firstChild.textContent,
+    };
+
+    fetch('http://localhost:3003/review', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reviewId),
+    })
+      .then(() => {
+        this.componentDidMount();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     const { reviews } = this.state;
 
@@ -57,11 +60,13 @@ class Reviews extends React.Component {
           {review.review_description}
         </div>
         <div className="review-footer">
-          <p className="likes_count">
-            {review.likes_count}
+          <p>
+            <span className="likes_count">
+              {review.likes_count}
+            </span>
             { ' likes' }
           </p>
-          <button type="submit" onClick={(event) => { Reviews.like(event); }}>Like</button>
+          <button type="submit" onClick={(event) => { this.like(event); }}>Like</button>
         </div>
       </div>
     ));
