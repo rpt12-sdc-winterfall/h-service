@@ -1,4 +1,5 @@
 const faker = require('faker');
+const moment = require('moment');
 const { review } = require('./models.js');
 
 const fakeData = [];
@@ -9,7 +10,7 @@ for (let i = 0; i < 10000; i += 1) {
     image_url: faker.image.people(),
     reviewer_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
     star_rate: Math.floor(Math.random() * 6),
-    review_date: faker.date.past(),
+    review_date: moment(faker.date.past()).format('MMM DD, YY'),
     review_description: faker.lorem.paragraphs(),
     likes_count: Math.floor(Math.random() * 1000),
   };
