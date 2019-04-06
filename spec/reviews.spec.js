@@ -30,7 +30,6 @@ describe('shallow rendering', () => {
     // the component has finished. It runs the callback in the next iteration
     // of the Event Loop
     process.nextTick(() => {
-      wrapper.update();
       expect(wrapper.find(StarRatingComponent)).toHaveLength(1);
       done();
     });
@@ -40,7 +39,6 @@ describe('shallow rendering', () => {
     const wrapper = shallow(<Review />);
 
     process.nextTick(() => {
-      wrapper.update();
       expect(wrapper.find(StarRatingComponent)).toHaveLength(1);
       done();
     });
