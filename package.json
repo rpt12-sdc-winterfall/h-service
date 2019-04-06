@@ -11,7 +11,7 @@
     "build": "webpack -d --watch",
     "seed": "node db/fakeData.js",
     "test": "mocha spec/serverSpec.js",
-    "test-react": "jest",
+    "test-react": "jest --coverage",
     "start": "nodemon server/index.js"
   },
   "dependencies": {
