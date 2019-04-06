@@ -39,7 +39,7 @@ describe('shallow rendering', () => {
     const wrapper = shallow(<Review />);
 
     process.nextTick(() => {
-      expect(wrapper.find(StarRatingComponent)).toHaveLength(1);
+      expect(wrapper.is('#reviews')).toBe(true);
       done();
     });
   });
