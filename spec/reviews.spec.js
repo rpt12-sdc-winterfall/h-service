@@ -26,7 +26,7 @@ beforeAll(() => {
   wrapper = shallow(<Review />);
 });
 
-describe('shallow rendering', () => {
+describe('shallow rendering the reviews component', () => {
   it('renders one StarRatingComponent component', (done) => {
     // to make sure the callback runs after the asynchronous AJAX call within
     // the component has finished. It runs the callback in the next iteration
