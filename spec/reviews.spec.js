@@ -5,8 +5,10 @@ import StarRatingComponent from 'react-star-rating-component';
 import fetchMock from 'fetch-mock';
 import Review from '../client/src/components/Reviews';
 
-// mock the fetch API get requests
+let wrapper;
+
 beforeAll(() => {
+  // mock the fetch API get requests
   fetchMock
     .get('http://localhost:3003/reviews/20', [
       {
@@ -20,12 +22,12 @@ beforeAll(() => {
         likes_count: 100,
       },
     ]);
+
+  wrapper = shallow(<Review />);
 });
 
 describe('shallow rendering', () => {
   it('renders one StarRatingComponent component', (done) => {
-    const wrapper = shallow(<Review />);
-
     // to make sure the callback runs after the asynchronous AJAX call within
     // the component has finished. It runs the callback in the next iteration
     // of the Event Loop
@@ -36,10 +38,22 @@ describe('shallow rendering', () => {
   });
 
   it('should be selectable by id "review"', (done) => {
-    const wrapper = shallow(<Review />);
-
     process.nextTick(() => {
       expect(wrapper.is('#reviews')).toBe(true);
+      done();
+    });
+  });
+
+  it('should render the expected review description', (done) => {
+    process.nextTick(() => {
+      expect(wrapper.find('.review-description').text()).toBe('some content reviewing a book');
+      done();
+    });
+  });
+
+  it('should render the expected number of likes', (done) => {
+    process.nextTick(() => {
+      expect(wrapper.find('.likes_count').text()).toBe('100');
       done();
     });
   });
