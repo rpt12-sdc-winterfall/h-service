@@ -11,7 +11,7 @@
     "build": "webpack -d --watch",
     "seed": "node db/fakeData.js",
     "test": "mocha spec/serverSpec.js",
-    "test-react": "jest",
+    "test-react": "jest --coverage",
     "start": "nodemon server/index.js"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "faker": "^4.1.0",
     "moment": "^2.24.0",
     "mongoose": "^5.4.19",
+    "node-fetch": "^2.3.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-star-rating-component": "^1.4.1",
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
+    "fetch-mock": "^7.3.1",
     "jest": "^24.5.0",
     "mocha": "^6.0.2",
     "morgan": "^1.9.1",
