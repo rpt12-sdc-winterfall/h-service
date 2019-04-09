@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   font-size: 0.875em;
   font-family: "Lato", "Helvetica", "sans-serif";
+  margin-left: 3em;
 `;
 
 const ReviewWrapper = styled.div`
@@ -26,7 +27,7 @@ const Img = styled.img`
 
 const Review = styled.div`
   float: left;
-  width: 45%;
+  width: 55%;
 `;
 
 const ReviewHeader = styled.div`
@@ -55,6 +56,7 @@ const ReviewDate = styled.a`
 
 export const ReviewDescription = styled.div`
   font-family: "Merriweather", "Georgia", serif;
+  margin-top: 0.5em;
   margin-bottom: 0.625em;
   line-height: 1.5em;
   color: #181818;
