@@ -1,11 +1,10 @@
 # Reviews micro-service
 
-> A service responsible for displaying/rendering a book reviews stored in a MongoDB with the ability to add new reviews & like a review.
+> A service responsible for displaying/rendering a book reviews stored in a MongoDB.
 
 ## Related Projects
 
   - https://github.com/rpt12-knightrider/jb-service
-  - https://github.com/rpt12-knightrider/s-service
   - https://github.com/rpt12-knightrider/sm-service
 
 ## Table of Contents
@@ -15,15 +14,23 @@
 1. [Development](#development)
 
 ## Usage
-1- run the seeding script tp feed the database with 10000 reviews documents.
+1- Install the dependencies.
+```sh
+npm install
+```
+2- run the seeding script tp feed the database with 10000 reviews documents.
 ```sh
 npm run seed
 ```
-2- then run the server.
+3- transpile the components.
+```sh
+npm run build
+```
+4- then run the server.
 ```sh
 npm start
 ```
-3- use `Postman` to send a `/reviews/:id` GET request to fetch the reviews associated to the book with the specified `id`.
+5- go to `http://localhost:3003` & voilà...
 
 ## Requirements
 
@@ -33,20 +40,10 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - npm 5.6.0
 - MongoDB
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install
-```
-
 ## API Endpoints
 
 #### `/reviews/:id`
-* description: retrieve the reviews associated to the book with the specified `id`.
+* description: retrieves the reviews associated to the book with the specified `id`.
 * API response:
 A JSON-encoded array of objects where each object represent a review. A review object example looks like this:
 ```js
@@ -61,5 +58,8 @@ A JSON-encoded array of objects where each object represent a review. A review o
   "likes_count": 995
 },
 ```
+
+### `/review`
+* description: updates the likes count for the specified review.
 
 
