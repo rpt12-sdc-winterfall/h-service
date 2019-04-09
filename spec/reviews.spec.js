@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { shallow } from 'enzyme';
-import StarRatingComponent from 'react-star-rating-component';
 import fetchMock from 'fetch-mock';
-import Review from '../client/src/components/Reviews';
+import Reviews, { StarRating, ReviewDescription } from '../client/src/components/Reviews';
 
 let wrapper;
 
@@ -23,21 +22,21 @@ beforeAll(() => {
       },
     ]);
 
-  wrapper = shallow(<Review />);
+  wrapper = shallow(<Reviews />);
 });
 
 describe('shallow rendering the reviews component', () => {
-  it('renders one StarRatingComponent component', (done) => {
+  it('renders one StarRating component', (done) => {
     // to make sure the callback runs after the asynchronous AJAX call within
     // the component has finished. It runs the callback in the next iteration
     // of the Event Loop
     process.nextTick(() => {
-      expect(wrapper.find(StarRatingComponent)).toHaveLength(1);
+      expect(wrapper.find(StarRating).exists()).toBe(true);
       done();
     });
   });
 
-  it('should be selectable by id "review"', (done) => {
+  it('should be selectable by id "reviews"', (done) => {
     process.nextTick(() => {
       expect(wrapper.is('#reviews')).toBe(true);
       done();
@@ -46,7 +45,7 @@ describe('shallow rendering the reviews component', () => {
 
   it('should render the expected review description', (done) => {
     process.nextTick(() => {
-      expect(wrapper.find('.review-description').text()).toBe('some content reviewing a book');
+      expect(wrapper.find(ReviewDescription).text()).toBe('some content reviewing a book');
       done();
     });
   });

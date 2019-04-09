@@ -41,7 +41,7 @@ const Reviewer = styled.a`
   line-height: 1.3;
 `;
 
-const StarRating = styled(StarRatingComponent)`
+export const StarRating = styled(StarRatingComponent)`
   line-height: 1.125em;
   font-size: 1.125em;
   vertical-align: top;
@@ -53,7 +53,7 @@ const ReviewDate = styled.a`
   color: #bbb;
 `;
 
-const ReviewDescription = styled.div`
+export const ReviewDescription = styled.div`
   font-family: "Merriweather", "Georgia", serif;
   margin-bottom: 0.625em;
   line-height: 1.5em;
@@ -143,7 +143,7 @@ class Reviews extends React.Component {
           </ReviewDescription>
           <ReviewFooter>
             <Likes>
-              <span>
+              <span className="likes_count">
                 {review.likes_count}
               </span>
               {' likes'}
