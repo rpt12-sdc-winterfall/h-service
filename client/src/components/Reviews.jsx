@@ -1,5 +1,83 @@
 import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  font-size: 0.875em;
+  font-family: "Lato", "Helvetica", "sans-serif";
+`;
+
+const ReviewWrapper = styled.div`
+  margin-bottom: 1.7em;
+
+  :after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+`;
+
+const Img = styled.img`
+  float: left;
+  max-width: 50px;
+  margin-right: 0.625em;
+  cursor: pointer;
+`;
+
+const Review = styled.div`
+  float: left;
+  width: 45%;
+`;
+
+const ReviewHeader = styled.div`
+  margin-bottom: 0.625em;
+`;
+
+const Reviewer = styled.a`
+  font-weight: bold;
+  text-decoration: none;
+  color: #00635d;
+  cursor: pointer;
+  line-height: 1.3;
+`;
+
+const StarRating = styled(StarRatingComponent)`
+  line-height: 1.125em;
+  font-size: 1.125em;
+  vertical-align: top;
+  margin-right: 2em;
+`;
+
+const ReviewDate = styled.a`
+  float: right;
+  color: #bbb;
+`;
+
+const ReviewDescription = styled.div`
+  font-family: "Merriweather", "Georgia", serif;
+  margin-bottom: 0.625em;
+  line-height: 1.5em;
+  color: #181818;
+`;
+
+const ReviewFooter = styled.div`
+`;
+
+const Likes = styled.a`
+  color: #00635d;
+  margin-right: 1.1em;
+`;
+
+const Button = styled.button`
+  font-size: 0.688em;
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 3px;
+  border: 1px solid #D6D0C4;
+  cursor: pointer;
+  background-color: #F4F1EA;
+  line-height: 1;
+`;
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -26,7 +104,7 @@ class Reviews extends React.Component {
 
   like(event) {
     const reviewId = {
-      reviewId: event.target.parentNode.parentNode.getAttribute('review_id'),
+      reviewId: event.target.parentNode.parentNode.getAttribute('id'),
       likes_count: event.target.previousSibling.firstChild.textContent,
     };
 
@@ -49,32 +127,37 @@ class Reviews extends React.Component {
     const { reviews } = this.state;
 
     const renderedReviews = reviews.map(review => (
-      <div key={review._id} review_id={review._id} className="review">
-        <div className="review-header">
-          <img alt="" src={review.image_url} />
-          <p>{review.reviewer_name}</p>
-          <StarRatingComponent name="review_rate" value={review.star_rate} starColor="#f65" emptyStarColor="#ddd" editing={false} />
-          <p>{review.review_date}</p>
-        </div>
-        <div className="review-description">
-          {review.review_description}
-        </div>
-        <div className="review-footer">
-          <p>
-            <span className="likes_count">
-              {review.likes_count}
-            </span>
-            { ' likes' }
-          </p>
-          <button type="submit" onClick={(event) => { this.like(event); }}>Like</button>
-        </div>
-      </div>
+      <ReviewWrapper key={review._id}>
+        <Img alt="" src={review.image_url} />
+        <Review id={review._id}>
+          <ReviewHeader>
+            <Reviewer>
+              {review.reviewer_name}
+            </Reviewer>
+            { ' rated it ' }
+            <StarRating name="review_rate" value={review.star_rate} starColor="#f65" emptyStarColor="#ddd" editing={false} />
+            <ReviewDate>{review.review_date}</ReviewDate>
+          </ReviewHeader>
+          <ReviewDescription>
+            {review.review_description}
+          </ReviewDescription>
+          <ReviewFooter>
+            <Likes>
+              <span>
+                {review.likes_count}
+              </span>
+              {' likes'}
+            </Likes>
+            <Button type="submit" onClick={(event) => { this.like(event); }}>Like</Button>
+          </ReviewFooter>
+        </Review>
+      </ReviewWrapper>
     ));
 
     return (
-      <div id="reviews">
+      <Wrapper id="reviews">
         {renderedReviews}
-      </div>
+      </Wrapper>
     );
   }
 }
