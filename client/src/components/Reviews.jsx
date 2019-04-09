@@ -3,12 +3,12 @@ import StarRatingComponent from 'react-star-rating-component';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  font-size: 14px;
+  font-size: 0.875em;
   font-family: "Lato", "Helvetica", "sans-serif";
 `;
 
 const ReviewWrapper = styled.div`
-  margin-bottom: 1.5em;
+  margin-bottom: 1.7em;
 
   :after {
     content: "";
@@ -20,17 +20,17 @@ const ReviewWrapper = styled.div`
 const Img = styled.img`
   float: left;
   max-width: 50px;
-  margin-right: 10px;
+  margin-right: 0.625em;
   cursor: pointer;
 `;
 
 const Review = styled.div`
   float: left;
-  width: 540px;
+  width: 45%;
 `;
 
 const ReviewHeader = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
 `;
 
 const Reviewer = styled.a`
@@ -38,13 +38,14 @@ const Reviewer = styled.a`
   text-decoration: none;
   color: #00635d;
   cursor: pointer;
-  line-height: 18px;
+  line-height: 1.3;
 `;
 
 const StarRating = styled(StarRatingComponent)`
-  line-height: 18px;
-  font-size: 18px;
+  line-height: 1.125em;
+  font-size: 1.125em;
   vertical-align: top;
+  margin-right: 2em;
 `;
 
 const ReviewDate = styled.a`
@@ -54,8 +55,8 @@ const ReviewDate = styled.a`
 
 const ReviewDescription = styled.div`
   font-family: "Merriweather", "Georgia", serif;
-  margin-bottom: 10px;
-  line-height: 21px;
+  margin-bottom: 0.625em;
+  line-height: 1.5em;
   color: #181818;
 `;
 
@@ -64,11 +65,11 @@ const ReviewFooter = styled.div`
 
 const Likes = styled.a`
   color: #00635d;
-  margin-right: 16px;
+  margin-right: 1.1em;
 `;
 
 const Button = styled.button`
-  font-size: 11px;
+  font-size: 0.688em;
   color: #333;
   padding: 4px 12px;
   border-radius: 3px;
