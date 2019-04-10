@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const { review } = require('../db/models.js');
 
@@ -10,6 +11,7 @@ app.listen(port, () => console.log(`listening on port ${port}`));
 
 app.use(express.static(`${__dirname}/../public`));
 app.use(morgan('dev'));
+app.use(cors());
 
 app.get('/reviews/:id', (req, res) => {
   review.find({ id: req.params.id }).exec()
