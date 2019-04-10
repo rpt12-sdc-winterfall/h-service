@@ -10,12 +10,12 @@
   "scripts": {
     "build": "webpack -d --watch",
     "seed": "node db/fakeData.js",
-    "test": "mocha spec/serverSpec.js",
-    "test-react": "jest --coverage",
+    "test": "jest --coverage",
     "start": "nodemon server/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "moment": "^2.24.0",
@@ -44,7 +44,6 @@
     "eslint-plugin-react": "^7.11.0",
     "fetch-mock": "^7.3.1",
     "jest": "^24.5.0",
-    "mocha": "^6.0.2",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "webpack": "^4.29.6",

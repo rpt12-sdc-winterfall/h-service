@@ -8,7 +8,7 @@ describe('the server', () => {
   let result;
 
   // runs before all tests in this block
-  before(() => axios('http://localhost:3003/reviews/20')
+  beforeAll(() => axios('http://localhost:3003/reviews/20')
     .then((response) => {
       result = response.data;
     })
