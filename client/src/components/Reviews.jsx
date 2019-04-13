@@ -90,7 +90,9 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3003/reviews/20')
+    const bookId = Number(window.location.pathname.split('/')[1]);
+
+    fetch(`http://localhost:3003/reviews/${bookId}`)
       .then(result => result.json())
       .then((result) => {
         this.setState(() => (
