@@ -6,10 +6,10 @@ const bodyParser = require('body-parser');
 const { review } = require('../db/models.js');
 
 const port = process.env.PORT || 3003;
+console.log(port);
 const app = express();
 app.listen(port, () => console.log(`listening on port ${port}`));
 
-// app.use(express.static(`${__dirname}/../public`));
 app.use('/:id', express.static(`${__dirname}/../public`));
 // app.use(morgan('dev'));
 app.use(cors());
