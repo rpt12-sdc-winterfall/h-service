@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost:27017/reviews', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://Jamal:1234@reviews-j1e5c.mongodb.net/reviews?retryWrites=true', { useNewUrlParser: true });
 
 // check the connection to the database.
 const db = mongoose.connection;
