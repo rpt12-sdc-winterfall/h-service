@@ -4,8 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { review } = require('../db/models.js');
-// || 3003
-const port = process.env.PORT;
+
+const port = process.env.PORT || 3003;
 console.log(port);
 const app = express();
 app.listen(port, () => console.log(`listening on port ${port}`));
