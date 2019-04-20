@@ -112,7 +112,7 @@ class Reviews extends React.Component {
       likes_count: event.target.previousSibling.firstChild.textContent,
     };
 
-    fetch('http://localhost:3003/review', {
+    fetch('/review', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
