@@ -26,15 +26,23 @@ app.get('/reviews/:id', (req, res) => {
 
 const jsonParser = bodyParser.json();
 app.patch('/review', jsonParser, (req, res) => {
-  console.log(req.body.reviewId);
-  console.log(req.body.likes_count);
+  let newLikesCount;
+  if (req.body.likedStatus === 'like') {
+    newLikesCount = req.body.likesCount + 1;
+  } else {
+    newLikesCount = req.body.likesCount - 1;
+  }
+
   review.findOneAndUpdate(
     { _id: req.body.reviewId },
-    { likes_count: Number(req.body.likes_count) + 1 },
-    { useFindAndModify: false },
+    { likes_count: newLikesCount },
+    {
+      useFindAndModify: false,
+      new: true,
+    },
   ).exec()
-    .then(() => {
-      res.end();
+    .then((updatedReview) => {
+      res.send(updatedReview);
     })
     .catch((err) => {
       console.log(err);

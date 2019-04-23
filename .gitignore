@@ -26,7 +26,7 @@ dist/
 
 # aws
 .elasticbeanstalk/
-
+.ebextensions/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
