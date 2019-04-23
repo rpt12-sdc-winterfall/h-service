@@ -1,5 +1,5 @@
 import React from 'react';
-// import { PropTypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 import StarRatingComponent from 'react-star-rating-component';
 import styled from 'styled-components';
 
@@ -163,8 +163,17 @@ class ReviewComponent extends React.Component {
   }
 }
 
-// ReviewComponent.propTypes = {
-//   name: PropTypes.string.isRequired,
-// };
+ReviewComponent.propTypes = {
+  review: PropTypes.shape({
+    _id: PropTypes.string,
+    id: PropTypes.number,
+    image_url: PropTypes.string,
+    reviewer_name: PropTypes.string,
+    star_rate: PropTypes.number,
+    review_date: PropTypes.string,
+    review_description: PropTypes.string,
+    likes_count: PropTypes.number,
+  }).isRequired,
+};
 
 export default ReviewComponent;

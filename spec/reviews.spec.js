@@ -10,7 +10,7 @@ let ReviewWrapper;
 
 beforeAll(() => {
   const mockReview = {
-    _id: 911,
+    _id: '911',
     id: 20,
     image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/03/30/30-chandler-bing.w330.h330.jpg',
     reviewer_name: 'Jamal',
