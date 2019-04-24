@@ -33,14 +33,13 @@ describe('the server', () => {
 
     const review = {
       reviewId: result[0]._id,
-      likes_count: oldLikesCount,
+      likesCount: oldLikesCount,
+      likedStatus: 'like',
     };
 
     return axios.patch('http://localhost:3003/review', review)
-      .then(() => axios.get('http://localhost:3003/reviews/20'))
-      .then(response => response.data[0])
       .then((updatedReview) => {
-        expect(updatedReview.likes_count).to.equal(oldLikesCount + 1);
+        expect(updatedReview.data.likes_count).to.equal(oldLikesCount + 1);
       })
       .catch((err) => {
         console.log(err);
