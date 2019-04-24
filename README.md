@@ -4,8 +4,8 @@
 
 ## Related Projects
 
-  - https://github.com/rpt12-knightrider/jb-service
-  - https://github.com/rpt12-knightrider/sm-service
+- <https://github.com/rpt12-knightrider/jb-service>
+- <https://github.com/rpt12-knightrider/sm-service>
 
 ## Table of Contents
 
@@ -14,27 +14,34 @@
 1. [Development](#development)
 
 ## Usage
+
 1- Install the dependencies.
+
 ```sh
 npm install
 ```
+
 2- run the seeding script tp feed the database with 10000 reviews documents.
+
 ```sh
 npm run seed
 ```
+
 3- transpile the components.
+
 ```sh
 npm run build
 ```
+
 4- then run the server.
+
 ```sh
 npm start
 ```
+
 5- go to `http://localhost:3003` & voilà...
 
 ## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 8.11.4
 - npm 5.6.0
@@ -42,10 +49,14 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## API Endpoints
 
-#### `/reviews/:id`
-* description: retrieves the reviews associated to the book with the specified `id`.
-* API response:
-A JSON-encoded array of objects where each object represent a review. A review object example looks like this:
+### `/reviews/:id`
+
+- method: `GET`.
+- description: retrieves the reviews associated to the book with the specified `id`.
+- API response:
+A JSON-encoded array of objects where each object represent a review.
+A review object would look like this:
+
 ```js
 {
   "_id": "5c99be23d83f3c5994dd1e38",
@@ -60,6 +71,8 @@ A JSON-encoded array of objects where each object represent a review. A review o
 ```
 
 ### `/review`
-* description: updates the likes count for the specified review.
 
-
+- method: `PATCH`.
+- description: updates the likes count for the specified review.
+- API response:
+A JSON-encoded **updated** review object with the new `likes_count`
