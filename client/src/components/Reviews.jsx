@@ -19,7 +19,7 @@ class Reviews extends React.Component {
   componentDidMount() {
     const bookId = Number(window.location.pathname.split('/')[1]);
 
-    fetch(`/reviews/${bookId}`)
+    fetch(`http://node-express-env.muzxdnrg2m.us-west-2.elasticbeanstalk.com/reviews/${bookId}`)
       .then(result => result.json())
       .then((result) => {
         this.setState(() => (
