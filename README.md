@@ -73,6 +73,6 @@ A review object would look like this:
 ### `/review`
 
 - method: `PATCH`.
-- description: updates the likes count for the specified review.
+- description: updates the `likes_count` for the specified review depending on the current state of the button (being like or unlike).
 - API response:
 A JSON-encoded **updated** review object with the new `likes_count`
