@@ -96,7 +96,7 @@ class ReviewComponent extends React.Component {
       likedStatus,
     };
 
-    fetch('/review', {
+    fetch('http://node-express-env.muzxdnrg2m.us-west-2.elasticbeanstalk.com/review', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
