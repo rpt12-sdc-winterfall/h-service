@@ -1,7 +1,5 @@
 import Review from './Review';
 
-const { styled } = window;
-
 const Wrapper = styled.div`
   font-size: 0.875em;
   font-family: "Lato", "Helvetica", "sans-serif";

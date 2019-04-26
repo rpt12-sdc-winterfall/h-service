@@ -1,8 +1,6 @@
 import { PropTypes } from 'prop-types';
 import StarRatingComponent from 'react-star-rating-component';
 
-const { styled } = window;
-
 const ReviewWrapper = styled.div`
   margin-bottom: 1.7em;
 
