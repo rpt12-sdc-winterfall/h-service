@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
 import Review from './Review';
+
+const { styled } = window;
 
 const Wrapper = styled.div`
   font-size: 0.875em;
