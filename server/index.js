@@ -15,10 +15,6 @@ app.use('/:id', express.static(`${__dirname}/../public`));
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.redirect('/0');
-});
-
 app.get('/reviews/:id', (req, res) => {
   review.find({ id: req.params.id }).exec()
     .then((results) => {
