@@ -81,6 +81,7 @@ A JSON-encoded **updated** review object with the new `likes_count`
 ## Running the tests
 
 Before running the tests using the `npm test` script, you have to prepare the environment as such:
-1- `import` `react` & `styled-components` in the `Reviews.jsx` & `Review.jsx` files.
-2- `import` `react` & `react-dom` in the `index.jsx` file.
-3- Replace the fetch requests urls to the `localhost` instead on port `3003`(in the `Reviews.jsx` & `Review.jsx` files.)
+
+1. `import` `react` & `styled-components` in the `Reviews.jsx` & `Review.jsx` files.
+1. `import` `react` & `react-dom` in the `index.jsx` file.
+1. Replace the fetch requests urls to the `localhost` instead on port `3003`(in the `Reviews.jsx` & `Review.jsx` files.)
