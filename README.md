@@ -11,7 +11,8 @@
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
-1. [Development](#development)
+1. [API Endpoints](#API%20Endpoints)
+1. [Running the tests](#Running%20the%20tests)
 
 ## Usage
 
@@ -76,3 +77,10 @@ A review object would look like this:
 - description: updates the `likes_count` for the specified review depending on the current state of the button (being like or unlike).
 - API response:
 A JSON-encoded **updated** review object with the new `likes_count`
+
+## Running the tests
+
+Before running the tests using the `npm test` script, you have to prepare the environment as such:
+1- `import` `react` & `styled-components` in the `Reviews.jsx` & `Review.jsx` files.
+2- `import` `react` & `react-dom` in the `index.jsx` file.
+3- Replace the fetch requests urls to the `localhost` instead on port `3003`(in the `Reviews.jsx` & `Review.jsx` files.)
