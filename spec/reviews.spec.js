@@ -21,7 +21,7 @@ beforeAll(() => {
   };
   // mock the fetch API get requests
   fetchMock
-    .get('/reviews/0', [
+    .get('http://localhost:3003/reviews/0', [
       mockReview,
     ]);
 
