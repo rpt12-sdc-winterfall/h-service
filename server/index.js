@@ -5,8 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { review } = require('../db/models.js');
 
-const port = process.env.PORT || 3003;
-console.log(port);
+const port = process.env.PORT || 3008;
 const app = express();
 app.listen(port, () => console.log(`listening on port ${port}`));
 
@@ -21,8 +20,32 @@ app.get('/reviews/:id', (req, res) => {
       res.send(results);
     })
     .catch((err) => {
-      console.log(err);
+      console.log('Error in GET req for server: ', err);
     });
+});
+
+//handle post request to server
+app.post('/addreview', (req, res) => {
+  const addReview = new review(req.body);
+  addReview.save((err) => {
+    if (err) {
+      res.status(500).send('Error in POST req for server!', err);
+    } 
+    res.status(201).send('Successfully added new review in DB: ');
+  }); 
+});
+
+//handle delete request to server
+app.delete('/removereview/:id', (req, res) => {
+  const reviewID = req.params.id;
+  review.findOneAndDelete({ id: reviewID}).exec()
+    .then((removed) => {
+      res.status(200).send('Successfully deleted review in DB!', removed);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send('Error in DELETE req for server!');
+    })
 });
 
 const jsonParser = bodyParser.json();

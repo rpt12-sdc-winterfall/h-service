@@ -10,14 +10,14 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: [],
+      reviews: []
     };
   }
 
   componentDidMount() {
     const bookId = Number(window.location.pathname.split('/')[1]) || 0;
 
-    fetch(`http://node-express-env.muzxdnrg2m.us-west-2.elasticbeanstalk.com/reviews/${bookId}`)
+    fetch(`http://localhost:3008/reviews/${bookId}`)
       .then(result => result.json())
       .then((result) => {
         this.setState(() => (
