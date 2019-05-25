@@ -25,25 +25,27 @@ app.get('/reviews/:id', (req, res) => {
 });
 
 //handle post request to server
-app.post('/reviews', (req, res) => {
-  const addReview = req.body;
-  review.add(addReview, (err) => {
+app.post('/addreview', (req, res) => {
+  const addReview = new review(req.body);
+  addReview.save((err) => {
     if (err) {
-      res.status(500).send('Error in POST req for server!');
+      res.status(500).send('Error in POST req for server!', err);
     } 
-    res.status(201).send('Successfully added new review in DB: ', res.id);
+    res.status(201).send('Successfully added new review in DB: ');
   }); 
 });
 
 //handle delete request to server
-app.delete('/reviews/:id', (req, res) => {
+app.delete('/removereview/:id', (req, res) => {
   const reviewID = req.params.id;
-  review.deleteById(reviewID, (err) => {
-    if (err) {
+  review.findOneAndDelete({ id: reviewID}).exec()
+    .then((removed) => {
+      res.status(200).send('Successfully deleted review in DB!', removed);
+    })
+    .catch((err) => {
+      console.log(err);
       res.status(500).send('Error in DELETE req for server!');
-    }
-    res.status(200).send('Successfully deleted review in DB!');
-  });
+    })
 });
 
 const jsonParser = bodyParser.json();
