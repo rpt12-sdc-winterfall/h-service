@@ -10,7 +10,7 @@ async function dbSeed() {
     var fakeData = [];
 
     //Insert 10 Million Reviews into DB
-    for (let i = 0; i < 100000; i += 1) {
+    for (let i = 0; i < 250000; i += 1) {
       const document = {
         id: Math.floor(Math.random() * 100),
         image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/03/30/30-chandler-bing.w330.h330.jpg',
@@ -36,9 +36,8 @@ async function dbSeed() {
     }
 
     //Check to see how much time has passed
-    const seedTime = new Date() - start;
+    const seedTime = ((new Date() - start)/60000).toFixed(2);
     console.log('Time to seed db: ', seedTime);
-
   } catch(err) {
     console.log('Error in db seed --->', err);
   }
