@@ -1,32 +1,49 @@
 const faker = require('faker');
 const moment = require('moment');
 const { review } = require('./models.js');
-const generator = require('random-date-generator');
 
-const fakeData = [];
 
-var newDate = () => {
-  generator.getRandomDate();
-  var start = new Date(2015, 1, 1);
-  var end = new Date(2019, 12, 31);
-  return generator.getRandomDateInRange(start, end);
-}
+async function dbSeed() {
+  try {
+    //Time seeding starts to process
+    const start = new Date();
+    var fakeData = [];
 
-for (let i = 0; i < 10000; i += 1) {
-  const document = {
-    id: Math.floor(Math.random() * 100),
-    image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/03/30/30-chandler-bing.w330.h330.jpg',
-    reviewer_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-    star_rate: Math.floor(Math.random() * 6),
-    review_date: newDate(),
-    review_description: faker.lorem.paragraphs(),
-    likes_count: Math.floor(Math.random() * 1000),
-  };
+    //Insert 10 Million Reviews into DB
+    for (let i = 0; i < 100000; i += 1) {
+      const document = {
+        id: Math.floor(Math.random() * 100),
+        image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/03/30/30-chandler-bing.w330.h330.jpg',
+        reviewer_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+        star_rate: Math.floor(Math.random() * 6),
+        review_date: moment(faker.date.past()).format('MMM DD, YY'),
+        review_description: faker.lorem.paragraphs(),
+        likes_count: Math.floor(Math.random() * 1000),
+      };
 
-  fakeData.push(document);
-}
+      //Add each review obj to fakeData storage arr
+      fakeData.push(document)
 
-review.insertMany(fakeData)
-  .then(() => {
-    console.log('data is successfully seeded!');
-  });
+      //Create batch insert to db with await 
+      if (i % 100000) {
+        console.log('Made it inside seed if loop condition!')
+        var batch = await review.insertMany(fakeData);
+      }
+
+      //Reset data storage
+      fakeData = [];
+
+    }
+
+    //Check to see how much time has passed
+    const seedTime = new Date() - start;
+    console.log('Time to seed db: ', seedTime);
+
+  } catch(err) {
+    console.log('Error in db seed --->', err);
+  }
+
+};
+
+//Invoke seeding function
+dbSeed();
