@@ -18,6 +18,7 @@ const reviewSchema = new mongoose.Schema({
   review_date: String,
   review_description: String,
   likes_count: Number,
+  review_id: Number,
 }, {
   versionKey: false,
 });
