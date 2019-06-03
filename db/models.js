@@ -1,29 +1,48 @@
-const mongoose = require('mongoose');
+const mysql = require('mysql');
+const mysqlConfig = require('./config.js');
+const connection = mysql.createConnection(mysqlConfig);
 
-mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/reviews', { useNewUrlParser: true });
 
-// check the connection to the database.
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  // we're connected!
-  console.log('we\'re connected');
+connection.connect(err => {
+  if (err) {
+    console.log('DB ERROR', err);
+  } else {
+    console.log('Connected to DB!')
+  }
 });
 
-const reviewSchema = new mongoose.Schema({
-  id: Number,
-  image_url: String,
-  reviewer_name: String,
-  star_rate: Number,
-  review_date: String,
-  review_description: String,
-  likes_count: Number,
-}, {
-  versionKey: false,
+
+// connection.query('DROP DATABASE IF EXISTS goodreads', (err, data) => {
+//   if(err) {
+//     console.log('Issue dropping goodreads DB');
+//   } else {
+//     console.log('Successfully dropped goodreads DB');
+//   }
+// });
+
+
+connection.query('CREATE DATABASE IF NOT EXISTS goodreads', function(err, data) {
+  if(err) {
+    console.log('DB ERROR creating goodreads', err)
+  } else {
+    console.log(null, data)
+  }
 });
 
-const review = mongoose.model('review', reviewSchema);
+connection.query('USE goodreads', function(err, data) {
+  if(err) {
+    console.log('DB ERROR using goodreads', err)
+  } else {
+    console.log(null, data)
+  }
+});
 
-module.exports = {
-  review,
-};
+connection.query(`CREATE TABLE IF NOT EXISTS reviews (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, book_id INTEGER, image_url TEXT, reviewer_name TEXT, star_rate INTEGER, review_date TEXT, review_description TEXT, likes_count INTEGER)`, function(err, data) {
+  if (err) {
+    console.log('ERROR', err)
+  } else {
+    console.log('Created reviews table in goodreads DB')
+  }
+});
+
+module.exports.connection = connection;
