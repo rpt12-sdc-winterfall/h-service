@@ -20,14 +20,14 @@ const seed = (async () => {
       {id: 'review_date', title: 'review_date'},
       {id: 'review_description', title: 'review_description'},
       {id: 'likes_count', title: 'likes_count'}, 
-    ]
+    ],
   });
   //Storage for batches of data obj's
   var seedData = [];
   //Loop for 10M data obj's
   for (var i = 0; i < 10000000; i++) {
     seedData.push({
-      book_id: Math.floor(Math.random() * 100),
+      book_id: Math.floor(Math.random() * 1000000),
       image_url: 'https://pixel.nymag.com/imgs/daily/vulture/2017/03/30/30-chandler-bing.w330.h330.jpg',
       reviewer_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       star_rate: Math.floor(Math.random() * 6),
