@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:3008'
+  http:
+    pool: 10000
+  phases:
+    - duration: 60
+      arrivalRate: 1
+scenarios:
+  - name: "get"
+    flow:
+      - loop:
+        - get:
+            url: "/reviews{{ $randomNumber(100000, 150000) }}"
+        count: 300
+  - name: "post"
+    flow:
+      - loop: 
+        - post: 
+            url: "/addReview"
+        count: 5
+      

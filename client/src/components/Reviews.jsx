@@ -34,6 +34,7 @@ class Reviews extends React.Component {
   render() {
     this.componentDidMount = this.componentDidMount.bind(this);
     const { reviews } = this.state;
+    console.log('reviews from server', reviews);
 
     const renderedReviews = reviews.map(review => (
       <Review key={review._id} review={review} />
