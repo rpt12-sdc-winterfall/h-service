@@ -34,8 +34,7 @@ dist/
 !.elasticbeanstalk/*.global.yml
 
 
-## DB keys
-db/config.js
+
 
 package-lock.json
 data.csv
