@@ -44,7 +44,7 @@ const seed = (async () => {
     }
   };
   //DB query to load final CSV file of 10M rows
-  connection.query('LOAD DATA LOCAL INFILE "/Users/heather/jamal/mj-service/data.csv" INTO TABLE reviews FIELDS TERMINATED BY "," LINES TERMINATED BY "\n" IGNORE 1 ROWS (book_id, image_url, reviewer_name, star_rate, review_date, review_description, likes_count)', (err) => {
+  connection.query('LOAD DATA LOCAL INFILE "h-service/data.csv" INTO TABLE reviews FIELDS TERMINATED BY "," LINES TERMINATED BY "\n" IGNORE 1 ROWS (book_id, image_url, reviewer_name, star_rate, review_date, review_description, likes_count)', (err) => {
     if (err) console.log('Error with CSV query in DB seed: --->', err);
     else {
       //Final time-stamp of seeding time
